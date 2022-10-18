@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { jwtSecrett } = require('../../config');
+const { jwtSecret } = require('../../config');
 const { loginUser } = require('../auth/auth.controller');
 
 const login = (req, res) => {
@@ -13,7 +13,7 @@ const login = (req, res) => {
                         id: response.id,
                         email: response.email,
                         role: response.role
-                    }, jwtSecrett);
+                    }, jwtSecret);
 
                     res.status(200).json({
                         message: 'Correct credentials',

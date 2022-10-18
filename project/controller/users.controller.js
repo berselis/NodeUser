@@ -19,9 +19,10 @@ const getUserById = async (id) => {
 const getUserByEmail = async (email) => {
     const data = await Users.findOne({
         where: {
-            email
+            email: email
         }
     })
+    return data
 };
 
 const createUser = async (data) => {
@@ -37,7 +38,6 @@ const createUser = async (data) => {
         country: data.country
     })
     return newUser
-
 };
 
 const updateUser = async (id, data) => {
