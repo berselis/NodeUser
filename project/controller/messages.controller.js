@@ -12,10 +12,11 @@ const getMessageById = async (id) => {
             id
         }
     })
+    return data
 }
 
 const createMessage = async (data) => {
-    const newMessage = Messages.create({
+    const newMessage = await Messages.create({
         id: uuid.v4,
         userId: data.userId,
         conversationId: data.conversationId,
@@ -24,9 +25,28 @@ const createMessage = async (data) => {
     return newMessage
 }
 
+const updateMessage = async(id, data) => {
+    const newData = await Messages.update(data, {
+        where: {
+            id
+        }
+    })
+    return newData
+}
+
+const  deleteMessage = async (id) => {
+    const data = await Messages.destroy({
+        where: {
+            id
+        }
+    })
+    return data
+}
 
 module.exports = {
     getAllMessages,
     getMessageById,
-    createMessage
+    createMessage,
+    updateMessage,
+    deleteMessage
 }
